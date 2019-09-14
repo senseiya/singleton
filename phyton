@@ -1,0 +1,22 @@
+#Como sabemos Python provee la función incluida hasattr(object, name) que retorna
+# True si el objeto tiene un atributo cuyo nombre coincida con la cadena name y False de otro modo.
+# Valiéndonos del uso de esta función, podríamos implementar la clase Singleton de la forma siguiente:
+class SingletonIfhasattr:
+
+    def __new__(cls):
+
+        if not hasattr(cls, 'instance'): # Si no existe el atributo “instance”
+
+            cls.instance = super(SingletonIfhasattr, cls).__new__(cls) # lo creamos
+
+        return cls.instance
+
+import singleton
+
+x = singleton.SingletonIfhasattr()
+
+y = singleton.SingletonIfhasattr()
+
+x is y # Los dos objetos tiene la misma identidad
+
+True
